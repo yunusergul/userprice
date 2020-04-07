@@ -1,0 +1,51 @@
+﻿@model IEnumerable<userprice.Models.User>
+
+@{
+    ViewData["Title"] = "Müşteriler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h1>Müşteriler</h1>
+
+<p>
+    <a asp-action="Create">Yeni Müşteri Oluştur</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                TC Kimlik No
+            </th>
+            <th>
+                Adı
+            </th>
+            <th>
+                Soyadı
+            </th>
+
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserPpNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserLastname)
+            </td>
+            <td>
+                <a asp-action="UserD" asp-route-id="@item.UserId">Detaylar</a> |
+                <a asp-controller="MoneyTransactions" asp-action="pmoney" asp-route-id="@item.UserId">TL Yatırma</a> |
+                <a asp-controller="MoneyTransactions" asp-action="tmoney" asp-route-id="@item.UserId">USD Yatırma</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

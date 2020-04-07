@@ -1,0 +1,45 @@
+﻿@model userprice.Models.User
+
+@{
+    ViewData["Title"] = "Müşteri Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h1>Müşteri Ekle</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">İsim</label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Soyisim</label>
+                <input asp-for="UserLastname" class="form-control" />
+                <span asp-validation-for="UserLastname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label"> TC Kimlik No</label>
+                <input asp-for="UserPpNo" class="form-control" />
+                <span asp-validation-for="UserPpNo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Ekle" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,67 @@
+﻿@model userprice.Models.MoneyTransactions
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>MoneyTransactions</h4>
+    <hr />
+    <dl class="row">
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.User.UserId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AmountMoney)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AmountMoney)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BalanceCont)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BalanceCont)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TrDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TrDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BalanceGr)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BalanceGr.ExchangeRateId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BalenceTip)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BalenceTip.ExchangeRateId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Opaoperation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Opaoperation.OperationName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.User.UserLastname)
+        </dd>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.User.UserId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.MoneyTransactionsId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

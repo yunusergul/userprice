@@ -1,0 +1,78 @@
+﻿@model userprice.Models.User
+
+@{
+    ViewData["Title"] = "UserD";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-sm-6">
+            <div class="card-box bg-red">
+                <div class="inner">
+                    <h2> @ViewData["trmoney"] ₺ </h2>
+                    <p> Today’s Collection </p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-money" aria-hidden="true"></i>
+                </div>
+                <a asp-controller="MoneyTransactions"  asp-action="usermoney" asp-route-id="@Model.UserId" class="card-box-footer">USD Al <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-sm-6">
+            <div class="card-box bg-green">
+                <div class="inner">
+                    <h2> @ViewData["usdmoney"] $ </h2>
+                    <p> Today’s Collection </p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-money" aria-hidden="true"></i>
+                </div>
+                <a asp-controller="MoneyTransactions"  asp-action="moneyuser" asp-route-id="@Model.UserId" class="card-box-footer">TL Al <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table">
+    <tr>
+        <th>İşem Miktarı</th>
+        <th>Yapılan İşelem</th>
+    </tr>
+    @foreach (var item in Model.MoneyTransactions)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AmountMoney)
+            </td>
+            <td>
+                @if (item.OpaoperationId == 2 && item.BalanceCont == 0 && item.BalenceTipId == 1)
+                {
+                    @ViewData["ms1"]
+                }
+                @if (item.OpaoperationId == 2 && item.BalanceCont == 0 && item.BalenceTipId == 2)
+                {
+                    @ViewData["ms2"]
+                }
+                @if (item.BalenceTipId == 1 && item.BalanceGrId == 2 && item.BalanceCont == 1 && item.OpaoperationId == 3)
+                {
+                    @ViewData["ms3"]
+                }
+                @if (item.BalenceTipId == 2 && item.BalanceGrId == 1 && item.BalanceCont == 1 && item.OpaoperationId == 3)
+                {
+                    @ViewData["ms4"]
+                }
+                @if (item.BalenceTipId == 1 && item.OpaoperationId == 1 && item.BalanceCont == 0)
+                {
+                    @ViewData["ms5"]
+                }
+                @if (item.BalenceTipId == 2 && item.OpaoperationId == 1 && item.BalanceCont == 0)
+                {
+                    @ViewData["ms5"]
+                }
+
+            </td>
+        </tr>
+    }
+</table>
